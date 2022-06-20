@@ -1,7 +1,7 @@
 # 租房微服务
 
 ## 技术栈
-golang + beego + consul + grpc + mysql + redis
+Golang + Go-Micro + beego + consul + RPC + MySQL + Redis
 
 ## TODO
 - [ ] 用户模块

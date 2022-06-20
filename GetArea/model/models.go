@@ -1,7 +1,7 @@
 package model
 
 import (
-	"JsonGo-Rent/web/utils"
+	"GetArea/utils"
 	"fmt"
 	"github.com/beego/beego/v2/client/orm"
 	"github.com/beego/beego/v2/core/logs"

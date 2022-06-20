@@ -3,9 +3,9 @@ module GetArea
 go 1.15
 
 require (
+	github.com/asim/go-micro/plugins/registry/consul/v3 v3.7.0
 	github.com/asim/go-micro/v3 v3.7.1
 	github.com/beego/beego/v2 v2.0.2
-	github.com/micro/micro/v3 v3.0.0
 	google.golang.org/protobuf v1.28.0
 )
 

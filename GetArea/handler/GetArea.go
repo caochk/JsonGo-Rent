@@ -11,7 +11,7 @@ import (
 	"time"
 
 	pb "GetArea/proto"
-	log "github.com/micro/micro/v3/service/logger"
+	"github.com/asim/go-micro/v3/util/log"
 )
 
 type GetArea struct{}
@@ -24,7 +24,7 @@ func (e *GetArea) GetArea(ctx context.Context, req *pb.Request, rsp *pb.Response
 	rsp.Errno = utils.RECODE_OK
 	rsp.Errmsg = utils.RecodeText(utils.RECODE_OK)
 
-	// 连接Redis。利用beego的cache模块（cache中的Redis实现好像是用的redigo库）
+	/* 连接Redis。利用beego的cache模块（cache中的Redis实现好像是用的redigo库）*/
 	// 以下应该是beego之cache模块连接Redis的固定格式
 	redisConfigMap := map[string]string{
 		"key":   utils.G_server_name,
@@ -93,10 +93,10 @@ func (e *GetArea) GetArea(ctx context.Context, req *pb.Request, rsp *pb.Response
 
 // Stream is a server side stream handler called via client.Stream or the generated client code
 func (e *GetArea) Stream(ctx context.Context, req *pb.StreamingRequest, stream pb.GetArea_StreamStream) error {
-	log.Infof("Received GetArea.Stream request with count: %d", req.Count)
+	log.Logf("Received GetArea.Stream request with count: %d", req.Count)
 
 	for i := 0; i < int(req.Count); i++ {
-		log.Infof("Responding: %d", i)
+		log.Logf("Responding: %d", i)
 		if err := stream.Send(&pb.StreamingResponse{
 			Count: int64(i),
 		}); err != nil {
@@ -114,7 +114,7 @@ func (e *GetArea) PingPong(ctx context.Context, stream pb.GetArea_PingPongStream
 		if err != nil {
 			return err
 		}
-		log.Infof("Got ping %v", req.Stroke)
+		log.Logf("Got ping %v", req.Stroke)
 		if err := stream.Send(&pb.Pong{Stroke: req.Stroke}); err != nil {
 			return err
 		}
