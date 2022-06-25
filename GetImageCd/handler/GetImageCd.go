@@ -52,7 +52,7 @@ func (e *GetImageCd) GetImageCd(ctx context.Context, req *pb.Request, rsp *pb.Re
 	rsp.Min = &pb.Response_Point{X: int64(c.Rect.Min.X), Y: int64(c.Rect.Min.Y)}
 
 	/* 连接Redis。利用beego的cache模块（cache中的Redis实现好像是用的redigo库）*/
-	// 以下应该是beego之cache模块连接Redis的固定格式
+	// 以下是beego之cache模块连接Redis的固定格式
 	redisConfigMap := map[string]string{
 		"key":   utils.G_server_name,
 		"conn":  utils.G_redis_addr + ":" + utils.G_redis_port,
